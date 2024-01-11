@@ -55,8 +55,20 @@ const updateCourse = async (req, res) => {
     res.status(200).json(course1)
 }
 
-const deleteCourse = (req, res) => {
-    res.status(200).json({mssg: "delete a course"})
+const deleteCourse = async (req, res) => {
+    const {id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({error: "Invalid ID."})
+    }
+
+    const course = Course.findOneAndDelete({_id: id})
+
+    if (!course) {
+        return res.status(404).json({error: 'Could not find course.'})
+    }
+
+    res.status(200).json(course)
 }
 
 module.exports = {
