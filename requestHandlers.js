@@ -15,7 +15,7 @@ const getCourse = async (req, res) => {
     }
 
     // we could also write "await Course.findById(id)"
-    const course = await Course.find({_id: id})
+    const course = await Course.findById(id)
 
     if (!course) {
         return res.status(404).json({error: 'Could not find course.'})
@@ -37,8 +37,22 @@ const createCourse = async (req, res) => {
     }
 }
 
-const updateCourse = (req, res) => {
-    res.status(200).json({mssg: "update a course"})
+const updateCourse = async (req, res) => {
+    const { id } = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).json({error: "Invalid ID."})
+    }
+
+    const course = await Course.findOneAndUpdate({_id: id}, req.body)
+
+    if (!course) {
+        return res.status(404).json({error: 'Could not find course.'})
+    }
+
+    const course1 = await Course.findById(id)
+
+    res.status(200).json(course1)
 }
 
 const deleteCourse = (req, res) => {
