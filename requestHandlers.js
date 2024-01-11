@@ -62,7 +62,7 @@ const deleteCourse = async (req, res) => {
         return res.status(400).json({error: "Invalid ID."})
     }
 
-    const course = Course.findOneAndDelete({_id: id})
+    const course = await Course.findOneAndDelete({_id: id})
 
     if (!course) {
         return res.status(404).json({error: 'Could not find course.'})
