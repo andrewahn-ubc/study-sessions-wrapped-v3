@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import CoursePanel from '../components/CoursePanel'
 
 const Home = () => {
     const [courses, setCourses] = useState(null)
@@ -21,7 +22,7 @@ const Home = () => {
             <div className="courses">
                 {/* why do we use parenthesis in the return statement in the map function? */}
                 {courses && courses.map((course) => (
-                    <p key={course._id}>{course.courseCode} </p>
+                    <CoursePanel key={course._id} course={course} />
                 ))}
             </div>
         </div>
