@@ -1,0 +1,20 @@
+header {
+    background: #202020;
+    height: 10vh;
+    margin: 0 auto;
+    max-width: 1400px;
+    padding: 1px 40px 25px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+.bookIcon {
+    margin: 0px 10px 0px;
+}
+

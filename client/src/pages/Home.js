@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import CoursePanel from '../components/CoursePanel'
+import './Home.css'
 
 const Home = () => {
     const [courses, setCourses] = useState(null)
