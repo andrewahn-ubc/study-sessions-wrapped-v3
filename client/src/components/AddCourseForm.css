@@ -47,3 +47,8 @@
     border-radius: 30px;
     border: none;
 }
+
+.addCourseForm button:hover {
+    background: #7CFC00;
+    color: black;
+}
