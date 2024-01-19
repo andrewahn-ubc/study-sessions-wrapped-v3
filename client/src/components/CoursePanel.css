@@ -1,11 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
 .coursePanel {
     background: #404040;
-    width: 200px;
-    min-height: 162px;
+    width: 250px;
+    min-height: 145px;
     height: auto;
     padding: 1px 20px 10px;
     margin: 20px;
     border-radius: 10px;
+    position: relative;
 }
 
 .courseTitle {
@@ -25,13 +30,20 @@
 }
 
 .deleteButton {
+    /* position: absolute positions the button relative to its nearest POSITIONED ancestor */
+    /* position: relative positions the button relative to where it would be statically positioned */
+    position: absolute;
+    top: 20px;
+    right: 20px;
     color: white;
-    font-size: 13px;
+    font-size: 12px;
     background: #303030;
     padding: 6px 10px;
     border-radius: 20px;
+    cursor: pointer;
 }
 
 .deleteButton:hover {
     background: #fd5c63;
+    color: #303030;
 }

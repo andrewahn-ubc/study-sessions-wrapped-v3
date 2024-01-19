@@ -16,7 +16,7 @@ const CoursePanel = ({course}) => {
             <h1 className='courseTitle' >{course.courseCode + " " + course.courseNumber}</h1>
             <p className='courseDesc' ><strong>{course.courseDesc}</strong></p>
             <p className='studyTime' >Time Studied: {course.studyTimeSoFar} </p>
-            <span className="deleteButton" onClick={deleteCourse}>Delete</span>
+            <span className="deleteButton" onClick={deleteCourse}>delete</span>
         </div>
     )
 }
