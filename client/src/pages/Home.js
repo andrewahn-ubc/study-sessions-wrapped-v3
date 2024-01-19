@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
-import CoursePanel from '../components/CoursePanel'
 import './Home.css'
+// components
+import CoursePanel from '../components/CoursePanel'
+import AddCourseForm from '../components/AddCourseForm'
 
 const Home = () => {
     const [courses, setCourses] = useState(null)
@@ -26,6 +28,8 @@ const Home = () => {
                     <CoursePanel key={course._id} course={course} />
                 ))}
             </div>
+
+            <AddCourseForm />
         </div>
     )
 }

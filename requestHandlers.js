@@ -25,12 +25,12 @@ const getCourse = async (req, res) => {
 }
 
 const createCourse = async (req, res) => {
-    const {courseCode, courseNumber, courseDesc, studyTimeSoFar} = req.body
+    const {courseCode, courseNumber, courseDesc} = req.body
 
     // if Course is unable to create a new course, it'll throw an error, so we MUST wrap
     // it in a try-catch.
     try {
-        const course = await Course.create({courseCode, courseNumber, courseDesc, studyTimeSoFar})
+        const course = await Course.create({courseCode, courseNumber, courseDesc, studyTimeSoFar: 0})
         res.status(200).json(course)
     } catch (error) {
         res.status(400).json({error: error.message})
