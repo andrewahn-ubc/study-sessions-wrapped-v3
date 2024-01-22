@@ -3,6 +3,7 @@ import './Home.css'
 // components
 import CoursePanel from '../components/CoursePanel'
 import AddCourseForm from '../components/AddCourseForm'
+import Stopwatch from "../components/Stopwatch"
 
 const Home = () => {
     const [courses, setCourses] = useState(null)
@@ -22,6 +23,9 @@ const Home = () => {
 
     return (
         <div className='Home'>
+            <Stopwatch />
+
+
             <div className="courses">
                 {/* why do we use parenthesis in the return statement in the map function? */}
                 {courses && courses.map((course) => (
