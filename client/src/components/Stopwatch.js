@@ -3,7 +3,7 @@ import "./Stopwatch.css"
 
 const Stopwatch = () => {
     const [time, setTime] = useState(0)
-    const [running, setRunning] = useState(true)
+    const [running, setRunning] = useState(false)
 
     // The actual timer
     useEffect(() => {

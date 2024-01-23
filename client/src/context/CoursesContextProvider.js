@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext, useReducer } from "react"
 
 export const CoursesContext = createContext()
 
@@ -9,7 +9,14 @@ export const coursesReducer = (state, action) => {
         case 'ADD-COURSE':
             return [action.payload, ...state]
         case 'DELETE-COURSE':
-            return (state.filter((course) => {course._id !== action.payload._id}))
+            return state.filter((course) => course._id !== action.payload._id)
+        case 'UPDATE-COURSE':
+            return state.map((course) => {
+                if (course._id == action.payload._id) {
+                    // assumes that action.payload will contain every property of the course.
+                    course = action.payload
+                }
+            })
         default:
             return state
     }
