@@ -5,6 +5,7 @@ import CoursePanel from '../components/CoursePanel'
 import AddCourseForm from '../components/AddCourseForm'
 import Stopwatch from "../components/Stopwatch"
 import useCoursesContext from '../hooks/useCoursesContext'
+import { SelectedContextProvider } from "../context/SelectedContextProvider"
 
 const Home = () => {
     const { courses, dispatch } = useCoursesContext()
@@ -25,7 +26,6 @@ const Home = () => {
     return (
         <div className='Home'>
             <Stopwatch />
-
 
             <div className="courses">
                 {/* why do we use parenthesis in the return statement in the map function? */}

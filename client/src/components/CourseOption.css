@@ -1,0 +1,37 @@
+* {
+    box-sizing: border-box;
+}
+
+.nonSelectedOption {
+    background: #404040;
+    width: 200px;
+    min-height: 100px;
+    padding: 1px 20px 0px;
+    margin: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.selectedOption {
+    background: #606060;
+    width: 200px;
+    min-height: 100px;
+    padding: 1px 20px 0px;
+    margin: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.courseOptionTitle {
+    color: white;
+    font-size: 20px;
+}
+
+.courseOptionDesc {
+    color: white;
+    font-size: 13px;
+}
+
+.nonSelectedOption:hover {
+    background: #606060;
+}
