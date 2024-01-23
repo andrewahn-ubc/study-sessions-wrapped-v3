@@ -4,9 +4,10 @@ import './Home.css'
 import CoursePanel from '../components/CoursePanel'
 import AddCourseForm from '../components/AddCourseForm'
 import Stopwatch from "../components/Stopwatch"
+import useCoursesContext from '../hooks/useCoursesContext'
 
 const Home = () => {
-    const [courses, setCourses] = useState(null)
+    const { courses, dispatch } = useCoursesContext()
 
     useEffect(() => {
         const fetchCourses = async () => {
@@ -14,12 +15,12 @@ const Home = () => {
             const json = await response.json()
 
             if (response.ok) {
-                setCourses(json)
+                dispatch({type: "SET-COURSES", payload: json})
             }
         }
 
         fetchCourses()
-    }, [])
+    }, [dispatch])
 
     return (
         <div className='Home'>

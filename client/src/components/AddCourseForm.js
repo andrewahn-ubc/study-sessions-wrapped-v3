@@ -1,10 +1,14 @@
+import useCoursesContext from "../hooks/useCoursesContext"
 import "./AddCourseForm.css"
 import { useState } from 'react'
+
 
 const AddCourseForm = () => {
     const [courseCode, setCC] = useState('')
     const [courseNumber, setCN] = useState('')
     const [courseDesc, setCD] = useState('')
+
+    const { courses, dispatch } = useCoursesContext()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -19,10 +23,14 @@ const AddCourseForm = () => {
             }
         })
 
+        const json = await response.json()
+
         if (!response.ok) {
             console.log("Error occurred while adding course.")
         } else {
             console.log('Course successfully added.')
+
+            dispatch({type: "ADD-COURSE", payload: json})
         }
 
 

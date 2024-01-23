@@ -1,13 +1,18 @@
+import useCoursesContext from '../hooks/useCoursesContext'
 import './CoursePanel.css'
 
 const CoursePanel = ({course}) => {
+    const { courses, dispatch } = useCoursesContext()
+
     const deleteCourse = async () => {
         const response = await fetch("/api/study-sessions/" + course._id, {
             method: "DELETE"
         })
 
-        if (!response.ok) {
-            console.log("Error occurred while deleting")
+        const json = await response.json()
+
+        if (response.ok) {
+            dispatch({type: "DELETE-COURSE", payload: json})
         }
     }
 
