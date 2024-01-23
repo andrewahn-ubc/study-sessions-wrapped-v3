@@ -4,3 +4,23 @@
     justify-content: center;
     align-items: center;
 }
+
+.Stopwatch h1 {
+    color: white;
+    font-size: 100px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.buttons button {
+    margin: 0px 15px;
+    padding: 10px 20px;
+    border-radius:5px;
+    font-size: 20px;
+    border: none;
+    color: white;
+    background: #404040;
+}

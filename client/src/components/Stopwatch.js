@@ -37,8 +37,10 @@ const Stopwatch = () => {
         <div className="Stopwatch">
             <h1>{timeDisplay(hours)} : {timeDisplay(minutes)} : {timeDisplay(seconds)}</h1>
 
-            <button onClick={startAndStop}>{running ? "STOP" : "START"}</button>
-            <button onClick={reset}>RESET</button>
+            <div className="buttons">
+                <button onClick={startAndStop}>{running ? "STOP" : "START"}</button>
+                <button onClick={reset}>RESET</button>
+            </div>
         </div>
     )
 }
