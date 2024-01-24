@@ -32,10 +32,8 @@ const Stopwatch = () => {
 
     // courses
     const { courses, dispatch } = useCoursesContext()
-
     // selected course
     const { selected, setSelected } = useSelectedContext()
-
     const addSession = () => {
         if (selected == null) {
             alert("No course selected.")

@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react"
 import "./CourseOption.css"
 import useSelectedContext from "../hooks/useSelectedContext"
 
 const CourseOption = ({ course }) => {
-    const {selected, setSelected} = useSelectedContext()
+    const { selected, setSelected } = useSelectedContext()
 
     console.log("course: ", course)
     console.log("selected: ", selected)
@@ -11,9 +10,11 @@ const CourseOption = ({ course }) => {
     const changeSelected = () => {
         if (selected == null) {
             setSelected(course)
+        } else if (selected._id !== course._id) {
+            setSelected(course)
         } else if (selected._id == course._id) {
             setSelected(null)
-        }
+        } 
     }
 
     return (

@@ -5,7 +5,6 @@ import CoursePanel from '../components/CoursePanel'
 import AddCourseForm from '../components/AddCourseForm'
 import Stopwatch from "../components/Stopwatch"
 import useCoursesContext from '../hooks/useCoursesContext'
-import { SelectedContextProvider } from "../context/SelectedContextProvider"
 
 const Home = () => {
     const { courses, dispatch } = useCoursesContext()
