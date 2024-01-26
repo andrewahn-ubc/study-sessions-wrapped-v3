@@ -1,26 +1,23 @@
 import "./CourseOption.css"
-import useSelectedContext from "../hooks/useSelectedContext"
 
-const CourseOption = ({ course }) => {
-    const { selected, setSelected } = useSelectedContext()
-
-    console.log("course: ", course)
-    console.log("selected: ", selected)
-
+const CourseOption = ({ course, selected, setSelectFunction }) => {
     const changeSelected = () => {
-        if (selected == null) {
-            setSelected(course)
-        } else if (selected._id !== course._id) {
-            setSelected(course)
-        } else if (selected._id == course._id) {
-            setSelected(null)
-        } 
+        selected = !selected
+        if (selected) {
+            // the case where this course is currently selected and we want to de-select it
+            setSelectFunction(null)
+        } else {
+            // the case where this course is NOT select it and we want to select it
+            setSelectFunction(course._id)
+        }
     }
 
     return (
-        <div className={selected == null ? 'nonSelectedOption' : (selected._id == course._id ? 'selectedOption' : 'nonSelectedOption')} 
+        <div className={selected ? 'selectedOption' : 'nonSelectedOption'} 
         onClick={changeSelected} >
-            <h1 className='courseOptionTitle'>{course.courseCode + " " + course.courseNumber}</h1>
+            <h1 className='courseOptionTitle'>
+                {course.courseCode + " " + course.courseNumber}
+            </h1>
             <p className='courseOptionDesc' ><strong>{course.courseDesc}</strong></p>
         </div>
     )

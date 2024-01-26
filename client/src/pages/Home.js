@@ -29,7 +29,7 @@ const Home = () => {
             <div className="courses">
                 {/* why do we use parenthesis in the return statement in the map function? */}
                 {courses && courses.map((course) => (
-                    <CoursePanel key={course._id} course={course} />
+                    <CoursePanel key={course == (null || undefined) ? null : course._id} course={course} />
                 ))}
             </div>
 

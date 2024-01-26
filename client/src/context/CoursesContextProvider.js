@@ -40,4 +40,4 @@ export const CoursesContextProvider = ({ children }) => {
             {children}
         </CoursesContext.Provider>
     )
-}
+} 

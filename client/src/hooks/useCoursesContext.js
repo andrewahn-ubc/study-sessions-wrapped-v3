@@ -6,7 +6,7 @@ const useCoursesContext = () => {
     const context = useContext(CoursesContext)
     // context is now equal to {courses, dispatch}
 
-    if (!context) {
+    if (!context || context === undefined) {
         throw Error("useCoursesContext was used outside of the scope of the context provider.")
     }
 

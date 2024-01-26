@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import "./Stopwatch.css"
 import useCoursesContext from "../hooks/useCoursesContext"
 import CourseOption from "./CourseOption"
-import useSelectedContext from "../hooks/useSelectedContext"
 
 const Stopwatch = () => {
     const [time, setTime] = useState(0)
@@ -32,25 +31,27 @@ const Stopwatch = () => {
 
     // courses
     const { courses, dispatch } = useCoursesContext()
-    // selected course
-    const { selected, setSelected } = useSelectedContext()
+    const [selectedID, setSelected] = useState(null)
+
     const addSession = () => {
-        if (selected == null) {
-            alert("No course selected.")
-        } else {
-            selected.studyTimeSoFar += time
-
-            dispatch({type: "UPDATE-COURSE", payload: selected})
-
-            setSelected(null)
+        if (selectedID == null) {
+            return alert("You must select a course haha")
         }
+
+        const courseToUpdate = courses.find((course) => course._id == selectedID)
+
+        courseToUpdate.studyTimeSoFar += time
+
+        dispatch({type: "UPDATE-COURSE", payload: courseToUpdate})
     }
 
     return (
         <div className="Stopwatch">
             <div className="courseSelect" >
                 {courses && courses.map((course) => (
-                    <CourseOption course={course}/>
+                    <CourseOption key={course._id} course={course} 
+                    selected={selectedID == course._id ? true : false} 
+                    setSelectFunction={setSelected}/>
                 ))}
             </div>
 
