@@ -1,8 +1,7 @@
 const mongoose = require('mongoose')
 
-const Schema = mongoose.Schema
-
-const courseSchema = new Schema({
+// creates structure in our data
+const courseSchema = new mongoose.Schema({
     courseCode: {
         type: String,
         required: true
@@ -21,5 +20,5 @@ const courseSchema = new Schema({
     }
 }, { timestamps: true })
 
-// Creates the model right before exporting.
+// rreates the model right before exporting.
 module.exports = mongoose.model("Course", courseSchema)

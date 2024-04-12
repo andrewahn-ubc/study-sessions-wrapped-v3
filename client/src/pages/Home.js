@@ -8,18 +8,28 @@ import useCoursesContext from '../hooks/useCoursesContext'
 
 const Home = () => {
     const { courses, dispatch } = useCoursesContext()
+    var courseList = [];
 
     useEffect(() => {
         const fetchCourses = async () => {
-            const response = await fetch('/api/study-sessions')
+            const requestOptions = {
+                method: "GET",
+                redirect: "follow"
+            };
+
+            const response = await fetch("http://localhost:8000/api/study-sessions/", requestOptions)
             const json = await response.json()
 
             if (response.ok) {
-                dispatch({type: "SET-COURSES", payload: json})
+                for (let i = 0; i < json.length; i++) {
+                    courseList[i] = json[i];
+                }
+                dispatch({type: "SET-COURSES", payload: courseList})
             }
         }
 
         fetchCourses()
+
     }, [dispatch])
 
     return (
@@ -28,8 +38,8 @@ const Home = () => {
 
             <div className="courses">
                 {/* why do we use parenthesis in the return statement in the map function? */}
-                {courses && courses.map((course) => (
-                    <CoursePanel key={course == (null || undefined) ? null : course._id} course={course} />
+                {courseList && courseList.map((course) => (
+                    <CoursePanel key={course._id} course={course} />
                 ))}
             </div>
 
